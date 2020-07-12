@@ -2,10 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   width: 800px;
-  
 }
 
 .grid img {
-  padding: 5px;
-  width: 180px;
+  margin: 15px;
+  width: 165px;
+}
+
+.winEffect {
+  animation: heartBeat;
+  animation-duration: 1s;
 }
