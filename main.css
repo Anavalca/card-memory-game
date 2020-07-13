@@ -1,17 +1,47 @@
-h1{
-  text-align: center;
+body {
+  font-family: 'Fredoka One', cursive;
+}
 
+h1 {
+  text-align: center;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.blue{
+  color: #00e4cf;
+}
+
+.red{
+  color: #fd5c70;
 }
 
 .optionPanel {
   display: flex;
   justify-content: center;
-  background-color: #00dabf;
   color: white;
 }
 
-.optionPanel div{
-  padding: 6px;
+.iceTopic{
+  background-color: #00e4cf;
+  ;
+}
+
+.animalTopic{
+  background-color: #fd5c70;
+}
+
+.optionPanel div {
+  padding: 8px;
+  
+}
+
+#topic, #level {
+  font-family: 'Fredoka One', cursive;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 2px;
+  cursor: pointer;
 }
 
 .gamePanel {
@@ -31,12 +61,13 @@ h1{
 
 .grid img {
   margin: 25px;
-  padding: 15px;
+  padding: 9px;
   width: 130px;
   height: 130px;
   border: 1px solid #e0e2e4;
-  border-radius: 4px;
+  border-radius: 10px;
   box-shadow: 2px 2px 8px 2px #c5ced5;
+  cursor: pointer;
 }
 
 .grid img:hover {
