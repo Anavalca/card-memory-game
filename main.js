@@ -86,6 +86,92 @@ document.addEventListener('DOMContentLoaded', () => {
       img:"images/watermelon.png"
     },
   ]
+
+  const arrAnimalEasy = [
+    {
+      name:"cat",
+      img:"images/cat.png"
+    },
+    {
+      name:"cat",
+      img:"images/cat.png"
+    },
+    {
+      name:"dog",
+      img:"images/dog.png"
+    },
+    {
+      name:"dog",
+      img:"images/dog.png"
+    },
+    {
+      name:"frog",
+      img:"images/frog.png"
+    },
+    {
+      name:"frog",
+      img:"images/frog.png"
+    },
+    {
+      name:"pig",
+      img:"images/pig.png"
+    },
+    {
+      name:"pig",
+      img:"images/pig.png"
+    },
+  ]
+
+  const arrAnimalHard = [
+    {
+      name:"cat",
+      img:"images/cat.png"
+    },
+    {
+      name:"cat",
+      img:"images/cat.png"
+    },
+    {
+      name:"dog",
+      img:"images/dog.png"
+    },
+    {
+      name:"dog",
+      img:"images/dog.png"
+    },
+    {
+      name:"frog",
+      img:"images/frog.png"
+    },
+    {
+      name:"frog",
+      img:"images/frog.png"
+    },
+    {
+      name:"pig",
+      img:"images/pig.png"
+    },
+    {
+      name:"pig",
+      img:"images/pig.png"
+    },
+    {
+      name:"hippo",
+      img:"images/hippo.png"
+    },
+    {
+      name:"hippo",
+      img:"images/hippo.png"
+    },
+    {
+      name:"monkey",
+      img:"images/monkey.png"
+    },
+    {
+      name:"monkey",
+      img:"images/monkey.png"
+    },
+  ]
   
   const grid = document.querySelector('.grid')
   const resultDisplay = document.querySelector('#result')
@@ -103,8 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
       cardArray = arrIceCreamEasy
     } else if (levelOption.value === 'hard' && topicOption.value === 'ice'){
       cardArray = arrIceCreamHard
+    } else if (levelOption.value === 'easy' && topicOption.value === 'animal'){
+      cardArray = arrAnimalEasy
+    } else if (levelOption.value === 'hard' && topicOption.value === 'animal'){
+      cardArray = arrAnimalHard
     }
-    
     cardArray.sort(() => 0.5 - Math.random())
     createPanel()
   }
@@ -112,12 +201,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function createPanel() {
     for (let i = 0; i < cardArray.length; i++) {
       var card = document.createElement('img')
-      card.setAttribute('src', 'images/white.png')
+      if (topicOption.value === 'ice'){
+        card.setAttribute('src', 'images/frigo.png')
+      } else if (topicOption.value === 'animal'){
+        card.setAttribute('src', 'images/ele.png')
+      }
       card.setAttribute('data-id', i)
       card.addEventListener('click', flipCard)
       grid.appendChild(card)
-    }
+      }
   }
+  
 
   function checkForMatch() {
     let cards = document.querySelectorAll('img')
@@ -136,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 600);
 
     } else {
-      cards[optionOneId].setAttribute('src', 'images/white.png')
-      cards[optionTwoId].setAttribute('src', 'images/white.png')
+      cards[optionOneId].setAttribute('src', 'images/frigo.png')
+      cards[optionTwoId].setAttribute('src', 'images/frigo.png')
     }
     cardsChosen = []
     cardsChosenId = []
