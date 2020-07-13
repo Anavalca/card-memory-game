@@ -38,6 +38,7 @@ h1 {
 
 #topic, #level {
   font-family: 'Fredoka One', cursive;
+  color: rgb(69, 69, 69);
   border-radius: 5px;
   font-size: 12px;
   padding: 2px;
@@ -51,6 +52,22 @@ h1 {
   align-items: center;
 }
 
+.dataContainer{
+  display: flex;
+  color: rgb(69, 69, 69);
+  letter-spacing: 1px;
+}
+
+.dataContainer h4{
+  padding: 0 25px 0 25px;
+}
+
+.data {
+  color: grey;
+  font-size: 20px;
+  padding-left: 2px;
+
+}
 
 .grid {
   display: flex;

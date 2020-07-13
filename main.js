@@ -174,19 +174,29 @@ document.addEventListener('DOMContentLoaded', () => {
   ]
 
   const grid = document.querySelector('.grid')
-  const resultDisplay = document.querySelector('#result')
   const title = document.querySelector('#title')
   const optionPanel = document.querySelector('.optionPanel')
   const levelOption = document.querySelector('#level')
   const topicOption = document.querySelector('#topic')
+  const resultDisplay = document.querySelector('#result')
+  const errorDisplay = document.querySelector('#error')
+  const minutesDisplay = document.querySelector("#minutes");
+  const secondsDisplay = document.querySelector("#seconds");
 
   let cardArray = []
   let cardsChosen = []
   let cardsChosenId = []
   let cardsWon = []
+  let time = 
+
+  resultDisplay.textContent = '0'
+  errorDisplay.textContent = 0
+  minutesDisplay.textContent = 0
+  secondsDisplay.textContent = 0
 
 
   function changeTopicIce() {
+    restartTime()
     title.classList.remove('red')
     title.classList.add('blue')
     optionPanel.classList.remove('animalTopic')
@@ -195,10 +205,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function changeTopicAnimal() {
+    restartTime()
     title.classList.remove('blue')
     title.classList.add('red')
     optionPanel.classList.remove('iceTopic')
     optionPanel.classList.add('animalTopic')
+  }
+
+  function restartTime(){
+    clearInterval(time)
+    minutesDisplay.textContent = 0
+    secondsDisplay.textContent = 0
+  }
+
+  function startTime() {
+
+    time = setInterval(function () {
+
+      if (secondsDisplay.textContent === 60) {
+        secondsDisplay.textContent === 0;
+        minutesDisplay.textContent++;
+
+        // if (m === 60) {
+        //   m === 0;
+        // }
+      }
+      secondsDisplay.textContent++;
+    }, 1000);
   }
 
   function selectOptionsGame() {
@@ -221,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function createPanel() {
+    startTime()
     for (let i = 0; i < cardArray.length; i++) {
       var card = document.createElement('img')
       if (topicOption.value === 'ice') {
@@ -233,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
       grid.appendChild(card)
     }
   }
-
 
   function checkForMatch() {
     let cards = document.querySelectorAll('img')
@@ -252,19 +285,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 600);
 
     } else {
-      if (topicOption.value === 'ice'){
+      if (topicOption.value === 'ice') {
         cards[optionOneId].setAttribute('src', 'images/frigo.png')
         cards[optionTwoId].setAttribute('src', 'images/frigo.png')
       } else if (topicOption.value === 'animal') {
         cards[optionOneId].setAttribute('src', 'images/animalPrint.png')
         cards[optionTwoId].setAttribute('src', 'images/animalPrint.png')
       }
+      errorDisplay.textContent++
     }
     cardsChosen = []
     cardsChosenId = []
     resultDisplay.textContent = cardsWon.length
     if (cardsWon.length === cardArray.length / 2) {
-      resultDisplay.textContent = 'Congratulations you found tehm all!!'
+      resultDisplay.textContent = '¡Ganaste!'
+      clearInterval(time)
     }
   }
 
@@ -279,6 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   selectOptionsGame()
-  topicOption.addEventListener('change', selectOptionsGame);
-  levelOption.addEventListener('change', selectOptionsGame);
+  topicOption.addEventListener('change', selectOptionsGame)
+  levelOption.addEventListener('change', selectOptionsGame)
 })
