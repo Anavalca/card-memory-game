@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8" />
@@ -12,10 +12,30 @@
 </head>
 
 <body>
-    <h3>Score:<span id="result"></span></h3>
+    <header>
+        <h1>Empareja las cartas</h1>
+    </header>
+    <nav class="optionPanel">
+        <div>
+            <label for="">Nivel</label>
+            <select id="level" name="level">
+                <option value='easy'>Fácil</option>
+                <option value='hard'>Difícil</option>
+            </select>
+        </div>
+        <div>
+            <label for="">Tema</label>
+            <select id="topic" name="topic">
+                <option value='ice'>Helados</option>
+                <option value='hard'>Animales</option>
+            </select>
+        </div>
+    </nav>
 
-    <div class="grid"></div>
-
+    <div class="gamePanel">
+        <h3>Puntuación:<span id="result"></span></h3>
+        <div class="grid"></div>
+    </div>
 </body>
 
 </html>

@@ -1,5 +1,42 @@
+
 document.addEventListener('DOMContentLoaded', () => {
-  const cardArray = [
+  
+  const arrIceCreamEasy = [
+    {
+      name:"bronw",
+      img:"images/brown.png"
+    },
+    {
+      name:"bronw",
+      img:"images/brown.png"
+    },
+    {
+      name:"crepe",
+      img:"images/crepe.png"
+    },
+    {
+      name:"crepe",
+      img:"images/crepe.png"
+    },
+    {
+      name:"vanilla",
+      img:"images/vanilla.png"
+    },
+    {
+      name:"vanilla",
+      img:"images/vanilla.png"
+    },
+    {
+      name:"watermelon",
+      img:"images/watermelon.png"
+    },
+    {
+      name:"watermelon",
+      img:"images/watermelon.png"
+    },
+  ]
+
+  const arrIceCreamHard = [
     {
       name:"bronw",
       img:"images/brown.png"
@@ -50,14 +87,28 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   ]
   
-  cardArray.sort(() => 0.5 - Math.random())
-
   const grid = document.querySelector('.grid')
   const resultDisplay = document.querySelector('#result')
+  const levelOption = document.querySelector('#level')
+  const topicOption = document.querySelector('#topic')
+  
+  let cardArray = []
   let cardsChosen = []
   let cardsChosenId = []
   let cardsWon = []
   
+  function selectOptionsGame() {
+    grid.innerHTML = ''
+    if (levelOption.value === 'easy' && topicOption.value === 'ice'){
+      cardArray = arrIceCreamEasy
+    } else if (levelOption.value === 'hard' && topicOption.value === 'ice'){
+      cardArray = arrIceCreamHard
+    }
+    
+    cardArray.sort(() => 0.5 - Math.random())
+    createPanel()
+  }
+    
   function createPanel() {
     for (let i = 0; i < cardArray.length; i++) {
       var card = document.createElement('img')
@@ -75,10 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cardsChosen[0] === cardsChosen[1]) {
       cards[optionOneId].classList.add('winEffect')
       cards[optionTwoId].classList.add('winEffect')
+      cardsWon.push(cardsChosen)
       setTimeout ( () => {
+        cards[optionOneId].classList.add('hidden')
+        cards[optionTwoId].classList.add('hidden')
         cards[optionOneId].setAttribute('src', 'images/zero.png')
         cards[optionTwoId].setAttribute('src', 'images/zero.png')
-        cardsWon.push(cardsChosen)
 
       }, 600);
 
@@ -104,5 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  createPanel()
+  selectOptionsGame()
+  topicOption.addEventListener('change', selectOptionsGame);
+  levelOption.addEventListener('change', selectOptionsGame);
 })
