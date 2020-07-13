@@ -180,8 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const topicOption = document.querySelector('#topic')
   const resultDisplay = document.querySelector('#result')
   const errorDisplay = document.querySelector('#error')
-  const minutesDisplay = document.querySelector("#minutes");
-  const secondsDisplay = document.querySelector("#seconds");
+  const minutesDisplay = document.querySelector("#minutes")
+  const secondsDisplay = document.querySelector("#seconds")
+  const restartIcon = document.querySelector('#restartIcon')
 
   let cardArray = []
   let cardsChosen = []
@@ -189,14 +190,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let cardsWon = []
   let time = 
 
-  resultDisplay.textContent = '0'
+  resultDisplay.textContent = 0
   errorDisplay.textContent = 0
   minutesDisplay.textContent = 0
   secondsDisplay.textContent = 0
 
 
   function changeTopicIce() {
-    restartTime()
+    restartData()
     title.classList.remove('red')
     title.classList.add('blue')
     optionPanel.classList.remove('animalTopic')
@@ -205,14 +206,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function changeTopicAnimal() {
-    restartTime()
+    restartData()
     title.classList.remove('blue')
     title.classList.add('red')
     optionPanel.classList.remove('iceTopic')
     optionPanel.classList.add('animalTopic')
   }
 
-  function restartTime(){
+  function restartData(){
+    resultDisplay.textContent = 0
+    errorDisplay.textContent = 0
     clearInterval(time)
     minutesDisplay.textContent = 0
     secondsDisplay.textContent = 0
@@ -222,8 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     time = setInterval(function () {
 
-      if (secondsDisplay.textContent === 60) {
-        secondsDisplay.textContent === 0;
+      if (secondsDisplay.textContent === '59') {
+        secondsDisplay.textContent = -1;
         minutesDisplay.textContent++;
 
         // if (m === 60) {
@@ -316,4 +319,5 @@ document.addEventListener('DOMContentLoaded', () => {
   selectOptionsGame()
   topicOption.addEventListener('change', selectOptionsGame)
   levelOption.addEventListener('change', selectOptionsGame)
+  restartIcon.addEventListener('click', selectOptionsGame)
 })
