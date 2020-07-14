@@ -188,9 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let cardsChosen = []
   let cardsChosenId = []
   let cardsWon = []
-  let time = 
+  let time =
 
-  resultDisplay.textContent = 0
+    resultDisplay.textContent = 0
   errorDisplay.textContent = 0
   minutesDisplay.textContent = 0
   secondsDisplay.textContent = 0
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     optionPanel.classList.add('animalTopic')
   }
 
-  function restartData(){
+  function restartData() {
     resultDisplay.textContent = 0
     errorDisplay.textContent = 0
     clearInterval(time)
@@ -228,10 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (secondsDisplay.textContent === '59') {
         secondsDisplay.textContent = -1;
         minutesDisplay.textContent++;
-
-        // if (m === 60) {
-        //   m === 0;
-        // }
       }
       secondsDisplay.textContent++;
     }, 1000);
@@ -308,11 +304,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function flipCard() {
     var cardId = this.getAttribute('data-id')
-    cardsChosen.push(cardArray[cardId].name)
-    cardsChosenId.push(cardId)
-    this.setAttribute('src', cardArray[cardId].img)
-    if (cardsChosen.length === 2) {
-      setTimeout(checkForMatch, 500)
+    if (cardId != cardsChosenId) { //COMPROBAR SI PINCHAS LA MISMA CARTA
+      cardsChosen.push(cardArray[cardId].name)
+      cardsChosenId.push(cardId)
+      this.setAttribute('src', cardArray[cardId].img)
+      if (cardsChosen.length === 2) {
+        setTimeout(checkForMatch, 500)
+      }
     }
   }
 
