@@ -1,5 +1,5 @@
 # EMPAREJADOS
-Juego de memoria para emparejar cartas 🃏 🃏 Ofrece la posibilidad de seleccionar el nivel de dificultad 💪 y también la temática de la decoración de las cartas 🍨🐱
+Juego de memoria basado en el **emparejamiento de cartas** 🃏 🃏 Ofrece la posibilidad de **seleccionar el nivel de dificultad** 💪 y también la **temática** de la decoración de las cartas 🍨🐱
 
 **Extras:**
 1. Marcador con puntuación ✔️
