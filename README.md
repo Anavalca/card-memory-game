@@ -13,3 +13,4 @@ HTML5, CSS3, y Javascript.
 
 ## Autora 
 Proyecto realizado por [Ana Valdivia Cano](https://www.linkedin.com/in/anavaldiviacano/)😊
+Inspirado en los *"JavascriptGames"* de [Ania Kubów](https://twitter.com/ania_kubow) 🕹️ 
